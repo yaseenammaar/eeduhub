@@ -57,6 +57,7 @@ import com.onesignal.OneSignal;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import es.dmoral.toasty.Toasty;
 
@@ -84,7 +85,8 @@ public class MainActivity extends AppCompatActivity
     private int mOriginalOrientation;
     private int mOriginalSystemUiVisibility;
     NestedScrollView nestedScrollView;
-    final String url="https://gurucool.xyz/eeduhub";
+//    final String url="https://gurucool.xyz/ECCInstitute";
+    final String url="https://gurucool.xyz/alnajahinstitute";
 
     final String admob_app_id = "ca-app-pub-3940256099942544~3347511713";
     final String admob_banner_id = "ca-app-pub-3940256099942544/6300978111";
@@ -98,7 +100,9 @@ public class MainActivity extends AppCompatActivity
 
         viewInit();
 
-        setTitle("Eeduhub");
+//        setTitle("Eeduhub");
+//        setTitle("ECC");
+        setTitle("Al-Najah Institute");
 
         mWebView.loadUrl(url);
 
@@ -197,7 +201,11 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             final public void onClick(View view) {
-                share();
+                fragment = null;
+
+                mWebView.setVisibility(View.VISIBLE);
+                frameLayout.setVisibility(View.GONE);
+                mWebView.loadUrl("https://gurucool.xyz/messages/154");
             }
         });
     }
@@ -747,25 +755,98 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_contact) {
-            //contact
-        } else if (id == R.id.nav_home) {
+        if (id == R.id.contact) {
             fragment = null;
-            setTitle("WebView");
+
+            mWebView.setVisibility(View.VISIBLE);
+            frameLayout.setVisibility(View.GONE);
+
+            mWebView.loadUrl("https://gurucool.xyz/messages/154");
+        } else if (id == R.id.home) {
+            fragment = null;
+
             mWebView.setVisibility(View.VISIBLE);
             frameLayout.setVisibility(View.GONE);
             mWebView.loadUrl(url);
 
-        } else if (id == R.id.nav_info) {
-            frameLayout.setVisibility(View.VISIBLE);
-            fragment = new About();
-        } else if (id == R.id.nav_share) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                //log.d("TAG", "The intersitial wasn't loaded yet.");
-            }
+        } else if (id == R.id.about) {
+            fragment = null;
+
+            mWebView.setVisibility(View.VISIBLE);
+            frameLayout.setVisibility(View.GONE);
+//            mWebView.loadUrl("https://gurucool.xyz/eeduhub#about");
+//            mWebView.loadUrl("https://gurucool.xyz/alnajahinstitute");
+            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=legacy&pid=154");
+
+        } else if (id == R.id.classroom) {
+            fragment = null;
+
+            mWebView.setVisibility(View.VISIBLE);
+            frameLayout.setVisibility(View.GONE);
+            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=classroompro&id=154");
+
+        } else if (id == R.id.courses) {
+            fragment = null;
+
+            mWebView.setVisibility(View.VISIBLE);
+            frameLayout.setVisibility(View.GONE);
+//            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=educatormode&id=110");
+            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=educatormode&id=154");
+
+        } else if (id == R.id.studyhelp) {
+            fragment = null;
+
+            mWebView.setVisibility(View.VISIBLE);
+            frameLayout.setVisibility(View.GONE);
+//            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=studyhelpl");
+//            mWebView.loadUrl("https://gurucool.xyz/");
+            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=studyhelppro&id=154");
+
+        } else if (id == R.id.etest) {
+            fragment = null;
+
+            mWebView.setVisibility(View.VISIBLE);
+            frameLayout.setVisibility(View.GONE);
+//            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=e_test");
+            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=testpro&id=154");
+//            try {
+//                String s = "154";
+//
+//                String postData = "id=154";
+//
+//                mWebView.postUrl("https://gurucool.xyz/testpro", postData.getBytes());
+//            }catch (Exception e){
+//                Toast.makeText(this, "Something is wrong", Toast.LENGTH_SHORT).show();
+//            }
+
+        } else if (id == R.id.QnA) {
+            fragment = null;
+
+            mWebView.setVisibility(View.VISIBLE);
+            frameLayout.setVisibility(View.GONE);
+//            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=discussion");
+            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=discussion");
+
+        } else if (id == R.id.report) {
+            fragment = null;
+
+            mWebView.setVisibility(View.VISIBLE);
+            frameLayout.setVisibility(View.GONE);
+
+//            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=classroom");
+//            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=classroom&id=154");
+            Toast.makeText(this, "This feature is under development", Toast.LENGTH_SHORT).show();
+
+
+        } else if (id == R.id.payment) {
+            fragment = null;
+
+            mWebView.setVisibility(View.VISIBLE);
+            frameLayout.setVisibility(View.GONE);
+//            mWebView.loadUrl("https://gurucool.xyz/index.php?link1=go-pro");
+            Toast.makeText(this, "This feature is under development", Toast.LENGTH_SHORT).show();
         }
+
 
         if (fragment != null) {
            setFragment();
